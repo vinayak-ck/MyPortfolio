@@ -171,28 +171,47 @@ function updateThemeIcon(theme) {
 
 
 // Using EmailJS (client-side)
-emailjs.init("YlnnqU24CyVmydxtb");
+document.getElementById("sendbt").addEventListener("click", function (e) {
+  e.preventDefault();
 
-document.getElementById("sendbt").addEventListener("click", (event) => {
-  event.preventDefault();
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const message = document.getElementById("message").value;
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const message = document.getElementById("message").value.trim();
 
-  if (!name || !email || !message) {
-    alert("Please fill in all fields.");
+  let errors = [];
+
+  // Validation only (no border color changes)
+  if (!name) errors.push("Name is required");
+  if (!email) errors.push("Email is required");
+  if (!message) errors.push("Message is required");
+
+  // Basic email check
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (email && !emailPattern.test(email)) {
+    errors.push("Enter a valid email address");
+  }
+
+  // If there are errors → show only alert
+  if (errors.length > 0) {
+    alert("Please fill the following fields:\n\n" + errors.join("\n"));
     return;
   }
 
+  // Sending email
   const formData = {
-    to_email: "vckanavalli@gmail.com",
     from_name: name,
     from_mail: email,
     message: message
   };
 
   emailjs.send("service_l2ir7ql", "template_y7t42w8", formData)
-    .then(() => alert("Message Sent!"))
+    .then(() => {
+      alert("Message Sent Successfully!");
+
+      // Clear fields after sending
+      document.getElementById("name").value = "";
+      document.getElementById("email").value = "";
+      document.getElementById("message").value = "";
+    })
     .catch(err => alert("Error: " + err));
 });
-

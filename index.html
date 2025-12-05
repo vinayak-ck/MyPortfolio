@@ -175,9 +175,8 @@
 
           <div class="about__data">
             <p class="about__description">
-              I'm a Third-year CSE undergraduate, passionate about technology and an avid reader. I have a self-motivated and can-do attitude, thriving in challenging and dynamic environments. Seeking a competitive position to enhance my skills and contribute to a professional organization. I'm very much passionate to learn new stuff that interests me and can help me to get better.
+              I am a third-year CSE undergraduate with a strong passion for technology and a deep love for learning. Driven by curiosity and a self-motivated, can-do attitude, I thrive in challenging and dynamic environments. I am seeking an opportunity that allows me to sharpen my skills, explore innovative ideas, and contribute meaningfully to a forward-thinking organization. I am always eager to take on new challenges, learn emerging technologies, and continuously improve myself both personally and professionally.            
             </p>
-
             <div class="about__info">
               <div>
                 <span class="about__info-title">09.20+</span>
@@ -487,7 +486,7 @@
                 <div>
                   <h3 class="qualification__title">College</h3>
                   <span class="qualification__subtitle"
-                    >S.J.B Institute of Technology, Manglore</span
+                    >S.J.B Institute of Technology, Bangalore</span
                   >
                   <div class="qualification__calender">
                     <i class="uil uil-calendar-alt"></i>
@@ -918,7 +917,7 @@
               <div>
                 <h3 class="contact__title">Contact Me</h3>
                 <span class="contact__subtitle"
-                  ><a href="tel:6362243314"></a>+91 733840272</span
+                  ><a href="tel:6362243314"></a>+91 7338440272</span
                 >
               </div>
             </div>
@@ -949,36 +948,23 @@
           <form action="" class="contact__form grid">
             <div class="contact__inputs grid">
               <div class="contact__content">
-                <label for="" class="content__label" id="name">Name</label>
-                <input type="text" class="contact__input" />
+                <label for="name" class="content__label">Name</label>
+                <input type="text" id="name" class="contact__input" />
               </div>
-
+            
               <div class="contact__content">
-                <label for="" class="content__label" id="mail">Email</label>
-                <input type="Email" class="contact__input" />
+                <label for="email" class="content__label">Email</label>
+                <input type="email" id="email" class="contact__input" />
               </div>
             </div>
-
+          
             <div class="contact__content">
-              <label for="" class="content__label" id="message">Message</label>
-              <textarea
-                name=""
-                id=""
-                cols="0"
-                rows="7"
-                class="contact__input"
-              ></textarea>
+              <label for="message" class="content__label">Message</label>
+              <textarea id="message" cols="0" rows="7" class="contact__input"></textarea>
             </div>
-
+          
             <div>
-              <a
-                href=" mailto: rkamathvenkatesh@gmail.com?subject=Testing out mailto! &body=This is only a test!"
-                class="button button--flex"
-                id = "sendbt"
-              >
-                Send Message
-                <i class="uil uil-message button__icon"></i>
-              </a>
+              <a href="#" class="button button--flex" id="sendbt">Send</a>
             </div>
           </form>
         </div>
@@ -1036,6 +1022,12 @@
       <i class="uil uil-arrow-up scrollup__icon"></i>
     </a>
 
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+      (function(){
+        emailjs.init("YlnnqU24CyVmydxtb");  
+      })();
+    </script>
     <script type="text/javascript" src="assets/swiper-bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/2205d59d52.js" crossorigin="anonymous"></script>
     <script src="assets/ptj.js"></script>
