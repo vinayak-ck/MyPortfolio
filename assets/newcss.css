@@ -69,9 +69,8 @@
   }
 }
 /*================= Variables Dark Theme ===============*/
-body.dark-theme {
-  /*========= HSL Color mode =========*/
-
+/*================= DARK THEME USING data-theme =================*/
+[data-theme="dark"] {
   --first-color-second: hsl(var(--hue-color), 30%, 8%);
   --title-color: hsl(var(--hue-color), 8%, 95%);
   --text-color: hsl(var(--hue-color), 8%, 75%);
@@ -81,6 +80,7 @@ body.dark-theme {
   --scroll-bar-color: hsl(var(--hue-color), 12%, 48%);
   --scroll-thumb-color: hsl(var(--hue-color), 12%, 36%);
 }
+
 
 /*================= Button Dark/Light ===============*/
 .nav__btns {
