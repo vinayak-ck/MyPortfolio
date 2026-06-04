@@ -58,6 +58,7 @@ MyPortfolio/
 │   ├── ptj.js
 │   ├── swiper-bundle.min.css
 │   ├── swiper-bundel.min.css
+│   ├── profile-card.css
 │   ├── img/
 │   │   ├── about.jpg
 │   │   ├── logo.jpg

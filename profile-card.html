@@ -6,423 +6,28 @@
   <title>Vinayak Kanavalli – Profile Card</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    *,
-*::before,
-*::after{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-body{
-    min-height:100vh;
-    padding:40px 20px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:2rem;
-
-    font-family:'DM Sans',sans-serif;
-
-    background:
-    radial-gradient(circle at top left,#60a5fa 0%,transparent 35%),
-    radial-gradient(circle at bottom right,#a855f7 0%,transparent 35%),
-    linear-gradient(
-    135deg,
-    #020617,
-    #0f172a,
-    #1e293b
-    );
-
-    overflow:hidden;
-}
-
-/* Floating blobs */
-
-body::before,
-body::after{
-    content:'';
-    position:absolute;
-    border-radius:50%;
-    filter:blur(120px);
-    z-index:-1;
-}
-
-body::before{
-    width:300px;
-    height:300px;
-    background:#60a5fa;
-    top:-100px;
-    left:-100px;
-    opacity:.4;
-}
-
-body::after{
-    width:350px;
-    height:350px;
-    background:#a855f7;
-    right:-100px;
-    bottom:-100px;
-    opacity:.4;
-}
-
-/* MAIN CARD */
-
-.card{
-    width:380px;
-    max-width: 90vw;
-    background:
-    rgba(255,255,255,0.08);
-
-    backdrop-filter:blur(30px);
-    -webkit-backdrop-filter:blur(30px);
-
-    border:1px solid rgba(255,255,255,.15);
-
-    border-radius:34px;
-
-    overflow:hidden;
-
-    box-shadow:
-    0 10px 40px rgba(0,0,0,.25),
-    inset 0 1px 0 rgba(255,255,255,.2);
-
-    transition:.4s ease;
-}
-
-.card:hover{
-    transform:
-    translateY(-10px)
-    scale(1.02);
-}
-
-/* HEADER */
-
-.card-top{
-    padding:24px;
-    position:relative;
-
-    background:
-    linear-gradient(
-    135deg,
-    rgba(255,255,255,.12),
-    rgba(255,255,255,.04)
-    );
-
-    border-bottom:
-    1px solid rgba(255,255,255,.08);
-}
-
-.card-top::after{
-    content:"VCK";
-    position:absolute;
-    top:24px;
-    right:24px;
-
-    font-size:12px;
-    letter-spacing:3px;
-
-    color:rgba(255,255,255,.15);
-
-    font-family:'Space Mono',monospace;
-}
-
-/* AVATAR */
-
-.avatar{
-    width:72px;
-    height:72px;
-
-    border-radius:50%;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    font-weight:700;
-    font-size:24px;
-
-    color:white;
-
-    background:
-    linear-gradient(
-    135deg,
-    #38bdf8,
-    #8b5cf6
-    );
-
-    border:2px solid rgba(255,255,255,.25);
-
-    box-shadow:
-    0 15px 30px rgba(0,0,0,.25);
-
-    margin-bottom:18px;
-}
-
-.name{
-    font-size:22px;
-    font-weight:700;
-    color:white;
-}
-
-.role{
-    margin-top:6px;
-    color:rgba(255,255,255,.75);
-    font-size:14px;
-}
-
-.college{
-    margin-top:4px;
-    color:rgba(255,255,255,.45);
-    font-size:12px;
-}
-
-/* BODY */
-
-.card-body{
-    padding:20px;
-}
-
-/* TAGS */
-
-.tag-row{
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-    margin-bottom:20px;
-}
-
-.tag{
-    padding:8px 14px;
-
-    border-radius:999px;
-
-    background:
-    rgba(255,255,255,.08);
-
-    border:
-    1px solid rgba(255,255,255,.1);
-
-    backdrop-filter:blur(20px);
-
-    color:white;
-    font-size:12px;
-}
-
-/* LOCATION */
-
-.location{
-    display:flex;
-    align-items:center;
-    gap:8px;
-
-    color:rgba(255,255,255,.7);
-
-    margin-bottom:24px;
-
-    font-size:13px;
-}
-
-/* STATS */
-
-.stats{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:12px;
-}
-
-.stat{
-    text-align:center;
-
-    padding:14px;
-
-    border-radius:20px;
-
-    background:
-    rgba(255,255,255,.06);
-
-    border:
-    1px solid rgba(255,255,255,.1);
-
-    backdrop-filter:blur(20px);
-}
-
-.stat-num{
-    display:block;
-
-    color:white;
-
-    font-size:18px;
-    font-weight:700;
-}
-
-.stat-label{
-    color:rgba(255,255,255,.55);
-    font-size:11px;
-}
-
-/* DIVIDER */
-
-.divider{
-    border:none;
-    height:1px;
-
-    background:
-    rgba(255,255,255,.08);
-
-    margin:24px 0;
-}
-
-/* LINKS */
-
-.links{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
-}
-
-.link-btn{
-    display:flex;
-    align-items:center;
-    gap:10px;
-
-    padding:11px 12px;
-
-    text-decoration:none;
-
-    color:white;
-
-    border-radius:16px;
-
-    background:
-    rgba(255,255,255,.06);
-
-    border:
-    1px solid rgba(255,255,255,.08);
-
-    transition:.3s;
-}
-
-.link-btn:hover{
-    transform:translateY(-4px);
-
-    background:
-    rgba(255,255,255,.12);
-}
-
-.link-btn svg{
-    opacity:.8;
-}
-
-/* CV BUTTON */
-
-.btn-cv{
-    width:100%;
-    margin-top:14px;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:10px;
-
-    padding:15px;
-
-    border-radius:18px;
-
-    text-decoration:none;
-
-    color:white;
-    font-weight:600;
-
-    background:
-    linear-gradient(
-    135deg,
-    #3b82f6,
-    #8b5cf6
-    );
-
-    box-shadow:
-    0 10px 25px rgba(59,130,246,.35);
-
-    transition:.3s;
-}
-
-.btn-cv:hover{
-    transform:translateY(-4px);
-}
-
-/* MOBILE */
-
-@media(max-width:550px){
-
-.card{
-    width:100%;
-}
-
-.links{
-    grid-template-columns:1fr;
-}
-
-.name{
-    font-size:24px;
-}
-
-}
-
-.avatar img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    border-radius:50%;
-}
-
-.card{
-    position:relative;
-}
-
-.card::before{
-    content:'';
-    position:absolute;
-    inset:0;
-
-    background:
-    linear-gradient(
-    135deg,
-    rgba(255,255,255,.18),
-    rgba(255,255,255,0)
-    );
-
-    pointer-events:none;
-}
-  </style>
+  <link rel="stylesheet" href="assets/profile-card.css">
 </head>
 <body>
   <div class="card">
-
-    <!-- TOP BANNER -->
     <div class="card-top">
       <div class="avatar">
-         <img src="assets/img/about.jpg" alt="">
+        <img src="assets/img/about.jpg" alt="Vinayak Kanavalli">
       </div>
       <div class="name">Vinayak Kanavalli</div>
       <div class="role">Computer Science Engineering Student</div>
       <div class="college">SJB Institute of Technology · Bengaluru</div>
     </div>
 
-    <!-- BODY -->
     <div class="card-body">
-
-      <!-- Skill tags -->
       <div class="tag-row">
-        <span class="tag green">Django</span>
-        <span class="tag blue">AI / ML</span>
-        <span class="tag amber">IoT</span>
+        <span class="tag">Django</span>
+        <span class="tag">AI / ML</span>
+        <span class="tag">IoT</span>
         <span class="tag">Python</span>
         <span class="tag">Full-Stack</span>
       </div>
 
-      <!-- Location -->
       <div class="location">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
@@ -431,7 +36,6 @@ body::after{
         Bengaluru, Karnataka, India
       </div>
 
-      <!-- Stats -->
       <div class="stats">
         <div class="stat">
           <span class="stat-num">9.21</span>
@@ -449,7 +53,6 @@ body::after{
 
       <hr class="divider">
 
-      <!-- Social Links -->
       <div class="links">
         <a href="https://github.com/vinayak-ck" target="_blank" class="link-btn">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
@@ -478,7 +81,6 @@ body::after{
         </a>
       </div>
 
-      <!-- Download CV -->
       <a href="assets/MyCV.pdf" download class="btn-cv">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
