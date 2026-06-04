@@ -51,16 +51,21 @@ No build step required — it's pure HTML/CSS/JS.
 ```
 MyPortfolio/
 ├── index.html
+├── profile-card.html
+├── thanks.html
 ├── assets/
-│   ├── css/
-│   │   └── styles.css
-│   ├── js/
-│   │   └── main.js
+│   ├── newcss.css
+│   ├── ptj.js
+│   ├── swiper-bundle.min.css
+│   ├── swiper-bundel.min.css
 │   ├── img/
 │   │   ├── about.jpg
+│   │   ├── logo.jpg
+│   │   ├── pro.jpg
 │   │   ├── projects/
 │   │   └── certificates/
 │   └── MyCV.pdf
+├── README.md
 ```
 
 ---
