@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vinayak Kanavalli – Profile Card</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    *,
+*::before,
+*::after{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    padding:40px 20px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:2rem;
+
+    font-family:'DM Sans',sans-serif;
+
+    background:
+    radial-gradient(circle at top left,#60a5fa 0%,transparent 35%),
+    radial-gradient(circle at bottom right,#a855f7 0%,transparent 35%),
+    linear-gradient(
+    135deg,
+    #020617,
+    #0f172a,
+    #1e293b
+    );
+
+    overflow:hidden;
+}
+
+/* Floating blobs */
+
+body::before,
+body::after{
+    content:'';
+    position:absolute;
+    border-radius:50%;
+    filter:blur(120px);
+    z-index:-1;
+}
+
+body::before{
+    width:300px;
+    height:300px;
+    background:#60a5fa;
+    top:-100px;
+    left:-100px;
+    opacity:.4;
+}
+
+body::after{
+    width:350px;
+    height:350px;
+    background:#a855f7;
+    right:-100px;
+    bottom:-100px;
+    opacity:.4;
+}
+
+/* MAIN CARD */
+
+.card{
+    width:380px;
+    max-width: 90vw;
+    background:
+    rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(30px);
+    -webkit-backdrop-filter:blur(30px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    border-radius:34px;
+
+    overflow:hidden;
+
+    box-shadow:
+    0 10px 40px rgba(0,0,0,.25),
+    inset 0 1px 0 rgba(255,255,255,.2);
+
+    transition:.4s ease;
+}
+
+.card:hover{
+    transform:
+    translateY(-10px)
+    scale(1.02);
+}
+
+/* HEADER */
+
+.card-top{
+    padding:24px;
+    position:relative;
+
+    background:
+    linear-gradient(
+    135deg,
+    rgba(255,255,255,.12),
+    rgba(255,255,255,.04)
+    );
+
+    border-bottom:
+    1px solid rgba(255,255,255,.08);
+}
+
+.card-top::after{
+    content:"VCK";
+    position:absolute;
+    top:24px;
+    right:24px;
+
+    font-size:12px;
+    letter-spacing:3px;
+
+    color:rgba(255,255,255,.15);
+
+    font-family:'Space Mono',monospace;
+}
+
+/* AVATAR */
+
+.avatar{
+    width:72px;
+    height:72px;
+
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-weight:700;
+    font-size:24px;
+
+    color:white;
+
+    background:
+    linear-gradient(
+    135deg,
+    #38bdf8,
+    #8b5cf6
+    );
+
+    border:2px solid rgba(255,255,255,.25);
+
+    box-shadow:
+    0 15px 30px rgba(0,0,0,.25);
+
+    margin-bottom:18px;
+}
+
+.name{
+    font-size:22px;
+    font-weight:700;
+    color:white;
+}
+
+.role{
+    margin-top:6px;
+    color:rgba(255,255,255,.75);
+    font-size:14px;
+}
+
+.college{
+    margin-top:4px;
+    color:rgba(255,255,255,.45);
+    font-size:12px;
+}
+
+/* BODY */
+
+.card-body{
+    padding:20px;
+}
+
+/* TAGS */
+
+.tag-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:20px;
+}
+
+.tag{
+    padding:8px 14px;
+
+    border-radius:999px;
+
+    background:
+    rgba(255,255,255,.08);
+
+    border:
+    1px solid rgba(255,255,255,.1);
+
+    backdrop-filter:blur(20px);
+
+    color:white;
+    font-size:12px;
+}
+
+/* LOCATION */
+
+.location{
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    color:rgba(255,255,255,.7);
+
+    margin-bottom:24px;
+
+    font-size:13px;
+}
+
+/* STATS */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+}
+
+.stat{
+    text-align:center;
+
+    padding:14px;
+
+    border-radius:20px;
+
+    background:
+    rgba(255,255,255,.06);
+
+    border:
+    1px solid rgba(255,255,255,.1);
+
+    backdrop-filter:blur(20px);
+}
+
+.stat-num{
+    display:block;
+
+    color:white;
+
+    font-size:18px;
+    font-weight:700;
+}
+
+.stat-label{
+    color:rgba(255,255,255,.55);
+    font-size:11px;
+}
+
+/* DIVIDER */
+
+.divider{
+    border:none;
+    height:1px;
+
+    background:
+    rgba(255,255,255,.08);
+
+    margin:24px 0;
+}
+
+/* LINKS */
+
+.links{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+}
+
+.link-btn{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    padding:11px 12px;
+
+    text-decoration:none;
+
+    color:white;
+
+    border-radius:16px;
+
+    background:
+    rgba(255,255,255,.06);
+
+    border:
+    1px solid rgba(255,255,255,.08);
+
+    transition:.3s;
+}
+
+.link-btn:hover{
+    transform:translateY(-4px);
+
+    background:
+    rgba(255,255,255,.12);
+}
+
+.link-btn svg{
+    opacity:.8;
+}
+
+/* CV BUTTON */
+
+.btn-cv{
+    width:100%;
+    margin-top:14px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+
+    padding:15px;
+
+    border-radius:18px;
+
+    text-decoration:none;
+
+    color:white;
+    font-weight:600;
+
+    background:
+    linear-gradient(
+    135deg,
+    #3b82f6,
+    #8b5cf6
+    );
+
+    box-shadow:
+    0 10px 25px rgba(59,130,246,.35);
+
+    transition:.3s;
+}
+
+.btn-cv:hover{
+    transform:translateY(-4px);
+}
+
+/* MOBILE */
+
+@media(max-width:550px){
+
+.card{
+    width:100%;
+}
+
+.links{
+    grid-template-columns:1fr;
+}
+
+.name{
+    font-size:24px;
+}
+
+}
+
+.avatar img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:50%;
+}
+
+.card{
+    position:relative;
+}
+
+.card::before{
+    content:'';
+    position:absolute;
+    inset:0;
+
+    background:
+    linear-gradient(
+    135deg,
+    rgba(255,255,255,.18),
+    rgba(255,255,255,0)
+    );
+
+    pointer-events:none;
+}
+  </style>
+</head>
+<body>
+  <div class="card">
+
+    <!-- TOP BANNER -->
+    <div class="card-top">
+      <div class="avatar">
+         <img src="assets/img/about.jpg" alt="">
+      </div>
+      <div class="name">Vinayak Kanavalli</div>
+      <div class="role">Computer Science Engineering Student</div>
+      <div class="college">SJB Institute of Technology · Bengaluru</div>
+    </div>
+
+    <!-- BODY -->
+    <div class="card-body">
+
+      <!-- Skill tags -->
+      <div class="tag-row">
+        <span class="tag green">Django</span>
+        <span class="tag blue">AI / ML</span>
+        <span class="tag amber">IoT</span>
+        <span class="tag">Python</span>
+        <span class="tag">Full-Stack</span>
+      </div>
+
+      <!-- Location -->
+      <div class="location">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+          <circle cx="12" cy="9" r="2.5"/>
+        </svg>
+        Bengaluru, Karnataka, India
+      </div>
+
+      <!-- Stats -->
+      <div class="stats">
+        <div class="stat">
+          <span class="stat-num">9.21</span>
+          <span class="stat-label">CGPA</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">05+</span>
+          <span class="stat-label">Projects</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">11+</span>
+          <span class="stat-label">Certs</span>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <!-- Social Links -->
+      <div class="links">
+        <a href="https://github.com/vinayak-ck" target="_blank" class="link-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+          </svg>
+          GitHub
+        </a>
+        <a href="https://linkedin.com/in/vinayak-c-kanavalli-" target="_blank" class="link-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+          LinkedIn
+        </a>
+        <a href="https://leetcode.com/u/vinayak_c_kanavalli/" target="_blank" class="link-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M16.102 17.93l-2.697 2.607c-.466.467-1.111.662-1.823.662s-1.357-.195-1.824-.662l-4.332-4.363c-.467-.467-.702-1.15-.702-1.863s.235-1.357.702-1.824l4.319-4.38c.467-.467 1.125-.645 1.837-.645s1.357.195 1.823.662l2.697 2.606c.514.515 1.365.497 1.9-.038.535-.536.553-1.387.039-1.901l-2.609-2.519c-.569-.569-1.228-.985-1.946-1.23l.073-.068c.524-.524.524-1.373 0-1.897l-2.696-2.697c-.467-.467-1.125-.663-1.837-.663s-1.357.195-1.824.662L3.463 8.235c-.948.948-1.463 2.201-1.463 3.532s.515 2.584 1.463 3.532l4.332 4.364c.948.948 2.201 1.463 3.532 1.463s2.584-.515 3.532-1.463l2.609-2.519c.514-.515.496-1.366-.039-1.901-.535-.535-1.386-.553-1.9-.038z"/>
+          </svg>
+          LeetCode
+        </a>
+        <a href="https://vinayak-ck.github.io/MyPortfolio/" target="_blank" class="link-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+          Portfolio
+        </a>
+      </div>
+
+      <!-- Download CV -->
+      <a href="assets/MyCV.pdf" download class="btn-cv">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        Download CV
+      </a>
+
+    </div>
+  </div>
+</body>
+</html>

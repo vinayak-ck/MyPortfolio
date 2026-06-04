@@ -168,50 +168,37 @@ function updateThemeIcon(theme) {
   themeButton.classList.add(theme === "light" ? "uil-moon" : "uil-sun");
 }
 
+/* ===== Floating Profile Card Popup ===== */
+window.addEventListener('DOMContentLoaded', function () {
+  const popupCard = document.getElementById('popup-card');
+  const trigger = document.getElementById('popup-trigger');
+  const closeBtn = document.getElementById('popup-close');
+  let dismissed = false;
 
+  trigger.addEventListener('click', function () {
+    if (popupCard.style.display === 'none' || popupCard.style.display === '') {
+      popupCard.style.display = 'block';
+    } else {
+      popupCard.style.display = 'none';
+    }
+  });
 
-// Using EmailJS (client-side)
-document.getElementById("sendbt").addEventListener("click", function (e) {
-  e.preventDefault();
+  closeBtn.addEventListener('click', function () {
+    popupCard.style.display = 'none';
+    dismissed = true;
+  });
 
-  const name = document.getElementById("name").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const message = document.getElementById("message").value.trim();
+  // Auto open after 3 seconds
+  setTimeout(function () {
+    if (!dismissed) {
+      popupCard.style.display = 'block';
+    }
+  }, 3000);
 
-  let errors = [];
-
-  // Validation only (no border color changes)
-  if (!name) errors.push("Name is required");
-  if (!email) errors.push("Email is required");
-  if (!message) errors.push("Message is required");
-
-  // Basic email check
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (email && !emailPattern.test(email)) {
-    errors.push("Enter a valid email address");
-  }
-
-  // If there are errors → show only alert
-  if (errors.length > 0) {
-    alert("Please fill the following fields:\n\n" + errors.join("\n"));
-    return;
-  }
-
-  // Sending email
-  const formData = {
-    from_name: name,
-    from_mail: email,
-    message: message
-  };
-
-  emailjs.send("service_l2ir7ql", "template_y7t42w8", formData)
-    .then(() => {
-      alert("Message Sent Successfully!");
-
-      // Clear fields after sending
-      document.getElementById("name").value = "";
-      document.getElementById("email").value = "";
-      document.getElementById("message").value = "";
-    })
-    .catch(err => alert("Error: " + err));
+  // Auto close after 10 seconds if ignored
+  setTimeout(function () {
+    if (!dismissed) {
+      popupCard.style.display = 'none';
+    }
+  }, 10000);
 });
