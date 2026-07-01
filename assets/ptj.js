@@ -202,3 +202,97 @@ window.addEventListener('DOMContentLoaded', function () {
     }
   }, 10000);
 });
+
+const certOverlay = document.getElementById('cert-overlay');
+const certBox     = document.getElementById('cert-box');
+const certImg     = document.getElementById('cert-img');
+
+function openCert(el) {
+  // Get the clicked image origin for transform-origin
+  const rect = el.getBoundingClientRect();
+  const originX = (rect.left + rect.width  / 2) / window.innerWidth  * 100;
+  const originY = (rect.top  + rect.height / 2) / window.innerHeight * 100;
+
+  certBox.style.transformOrigin = `${originX}% ${originY}%`;
+  certImg.src = el.src;
+
+  // Remove closing class if present
+  certOverlay.classList.remove('closing');
+
+  // Force reflow so transition fires
+  void certOverlay.offsetWidth;
+
+  certOverlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCert() {
+  certOverlay.classList.remove('open');
+  certOverlay.classList.add('closing');
+
+  // After animation ends, fully hide
+  setTimeout(function () {
+    certOverlay.classList.remove('closing');
+    certImg.src = '';
+    document.body.style.overflow = '';
+  }, 400);
+}
+
+// Close on Escape key
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape') closeCert();
+});
+
+// Prevent click inside box from closing overlay
+if (certBox) {
+  certBox.addEventListener('click', function (e) {
+    e.stopPropagation();
+  });
+}
+
+/* ===== Project Image Lightbox ===== */
+window.addEventListener('DOMContentLoaded', function () {
+  const projectOverlay = document.getElementById('project-overlay');
+  const projectBox     = document.getElementById('project-box');
+  const projectImg     = document.getElementById('project-img');
+  const projectClose   = document.getElementById('project-close');
+
+  window.openProject = function(el) {
+    const rect = el.getBoundingClientRect();
+    const ox = (rect.left + rect.width  / 2) / window.innerWidth  * 100;
+    const oy = (rect.top  + rect.height / 2) / window.innerHeight * 100;
+    projectBox.style.transformOrigin = ox + '% ' + oy + '%';
+    projectImg.src = el.src;
+    projectOverlay.classList.remove('closing');
+    void projectOverlay.offsetWidth;
+    projectOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.closeProject = function() {
+    projectOverlay.classList.remove('open');
+    projectOverlay.classList.add('closing');
+    setTimeout(function() {
+      projectOverlay.classList.remove('closing');
+      projectImg.src = '';
+      document.body.style.overflow = '';
+    }, 400);
+  };
+
+  if (projectClose) {
+    projectClose.addEventListener('click', function(e) {
+      e.stopPropagation();
+      window.closeProject();
+    });
+  }
+
+  if (projectBox) {
+    projectBox.addEventListener('click', function(e) {
+      e.stopPropagation();
+    });
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') window.closeProject();
+  });
+});

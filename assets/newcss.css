@@ -1331,3 +1331,249 @@ img {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+
+#cert-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(0, 0, 0, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  cursor: zoom-out;
+
+  /* hidden by default */
+  opacity: 0;
+  pointer-events: none;
+  transition: background 0.45s cubic-bezier(0.32, 0.72, 0, 1),
+              opacity 0.45s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+#cert-overlay.open {
+  background: rgba(0, 0, 0, 0.72);
+  opacity: 1;
+  pointer-events: all;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* The image box */
+#cert-box {
+  position: relative;
+  max-width: 860px;
+  width: 100%;
+  cursor: default;
+
+  /* Apple spring: starts tiny from origin, expands to full */
+  transform: scale(0.08);
+  transform-origin: center center;
+  opacity: 0;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow:
+    0 32px 80px rgba(0, 0, 0, 0.60),
+    inset 0 1px 0 rgba(255,255,255,0.12);
+
+  transition: transform 0.52s cubic-bezier(0.32, 0.72, 0, 1),
+              opacity 0.35s cubic-bezier(0.32, 0.72, 0, 1),
+              border-radius 0.52s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+#cert-overlay.open #cert-box {
+  transform: scale(1);
+  opacity: 1;
+  border-radius: 16px;
+}
+
+/* Closing state */
+#cert-overlay.closing #cert-box {
+  transform: scale(0.08);
+  opacity: 0;
+  border-radius: 24px;
+  transition: transform 0.38s cubic-bezier(0.32, 0.72, 0, 1),
+              opacity 0.28s cubic-bezier(0.32, 0.72, 0, 1),
+              border-radius 0.38s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+#cert-overlay.closing {
+  background: rgba(0, 0, 0, 0);
+  opacity: 0;
+  transition: background 0.38s cubic-bezier(0.32, 0.72, 0, 1),
+              opacity 0.38s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+/* The image itself */
+#cert-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+}
+
+/* Close button */
+#cert-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.80);
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s;
+  line-height: 1;
+}
+
+#cert-close:hover {
+  background: rgba(0, 0, 0, 0.70);
+  color: #fff;
+}
+
+/* Thumbnail cursor */
+.cert-thumb {
+  cursor: zoom-in !important;
+  transition: transform 0.22s ease, box-shadow 0.22s ease !important;
+}
+
+.cert-thumb:hover {
+  transform: scale(1.03) !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.40) !important;
+}
+
+/* Mobile */
+@media screen and (max-width: 600px) {
+  #cert-box {
+    max-width: 95vw;
+  }
+}
+
+/* ---- Project images — fixed uniform size ---- */
+.portfolio__img {
+  width: 100% !important;
+  height: 220px !important;
+  object-fit: cover !important;
+  object-position: top !important;
+  border-radius: 14px !important;
+  display: block !important;
+}
+
+.project-thumb {
+  cursor: zoom-in !important;
+  transition: transform 0.22s ease, box-shadow 0.22s ease !important;
+}
+
+.project-thumb:hover {
+  transform: scale(1.02) !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.45) !important;
+}
+
+/* ---- Project image lightbox (reuses cert overlay) ---- */
+#project-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(0,0,0,0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  cursor: zoom-out;
+  opacity: 0;
+  pointer-events: none;
+  transition: background 0.45s cubic-bezier(0.32,0.72,0,1),
+              opacity 0.45s cubic-bezier(0.32,0.72,0,1);
+}
+
+#project-overlay.open {
+  background: rgba(0,0,0,0.75);
+  opacity: 1;
+  pointer-events: all;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+#project-box {
+  position: relative;
+  max-width: 900px;
+  width: 100%;
+  cursor: default;
+  transform: scale(0.08);
+  transform-origin: center center;
+  opacity: 0;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.60),
+              inset 0 1px 0 rgba(255,255,255,0.12);
+  transition: transform 0.52s cubic-bezier(0.32,0.72,0,1),
+              opacity 0.35s cubic-bezier(0.32,0.72,0,1),
+              border-radius 0.52s cubic-bezier(0.32,0.72,0,1);
+}
+
+#project-overlay.open #project-box {
+  transform: scale(1);
+  opacity: 1;
+  border-radius: 16px;
+}
+
+#project-overlay.closing #project-box {
+  transform: scale(0.08);
+  opacity: 0;
+  border-radius: 24px;
+  transition: transform 0.38s cubic-bezier(0.32,0.72,0,1),
+              opacity 0.28s cubic-bezier(0.32,0.72,0,1),
+              border-radius 0.38s cubic-bezier(0.32,0.72,0,1);
+}
+
+#project-overlay.closing {
+  background: rgba(0,0,0,0);
+  opacity: 0;
+  transition: background 0.38s cubic-bezier(0.32,0.72,0,1),
+              opacity 0.38s cubic-bezier(0.32,0.72,0,1);
+}
+
+#project-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+}
+
+#project-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.80);
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s;
+  line-height: 1;
+}
+
+#project-close:hover {
+  background: rgba(0,0,0,0.70);
+  color: #fff;
+}
+
+@media screen and (max-width: 600px) {
+  #project-box { max-width: 95vw; }
+  .portfolio__img { height: 180px !important; }
+}
