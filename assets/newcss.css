@@ -1577,3 +1577,12 @@ img {
   #project-box { max-width: 95vw; }
   .portfolio__img { height: 180px !important; }
 }
+
+/* ---- Certificates — full image visible, natural size ---- */
+#certificates .portfolio__img {
+  height: auto !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  max-height: 280px !important;
+  background: transparent !important;
+}
